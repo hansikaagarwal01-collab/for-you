@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For You — Surprise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root{--bgA:#fff0f4;--bgB:#ffeef6;--accent:#ff5b84;--card:#ffffffee}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(135deg,var(--bgA),var(--bgB));
+      display:flex;align-items:center;justify-content:center;padding:18px;
+    }
+
+    .card{
+      width:min(980px,96vw);max-width:1100px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,0.97),rgba(255,255,255,0.9));box-shadow:0 18px 40px rgba(0,0,0,0.12);position:relative;overflow:hidden;padding:20px;display:grid;grid-template-columns:1fr 360px;gap:18px
+    }
+
+    .left{padding:28px;display:flex;flex-direction:column;justify-content:center}
+    h1{font-size:40px;color:var(--accent);font-weight:800;letter-spacing:-1px}
+    .sub{margin-top:8px;color:#6b4b56;font-weight:600}
+    .typewriter{margin-top:16px;font-size:16px;color:#4b3b3b;min-height:110px}
+
+    .slideshow{position:relative;width:100%;height:420px;border-radius:14px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,0.06)}
+    .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 1s ease}
+    .slide img{width:100%;height:100%;object-fit:cover}
+
+    .right{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px}
+    .controls{margin-top:12px;display:flex;gap:10px}
+    .btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:12px;border:none;font-weight:700;cursor:pointer}
+
+    .heart{position:absolute;width:18px;height:18px;transform:rotate(45deg);background:var(--accent);border-radius:3px;opacity:0;pointer-events:none}
+    .heart:before,.heart:after{content:'';position:absolute;width:18px;height:18px;background:var(--accent);border-radius:50%}
+    .heart:before{top:-9px;left:0}.heart:after{left:9px;top:0}
+    #hearts{position:absolute;inset:0;pointer-events:none}
+
+    .footer{position:absolute;left:20px;bottom:12px;font-size:13px;color:#6b5656}
+
+    @media (max-width:880px){.card{grid-template-columns:1fr;}.slideshow{height:320px}h1{font-size:32px}}
+  </style>
+</head>
+<body>
+  <div class="card" role="region" aria-label="Romantic surprise">
+    <div class="left">
+      <h1>For my favourite person</h1>
+      <div class="sub">A little slideshow — because every photo is a memory with you.</div>
+      <div class="typewriter" id="type">Hey — thinking of you. Press play to hear our song and watch the slideshow. 💖</div>
+
+      <div style="margin-top:18px;display:flex;gap:10px;align-items:center">
+        <button class="btn" id="sendHeart">Send a heart 💌</button>
+        <button class="btn" id="playAll">Play song & slideshow ▶</button>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="slideshow" id="slideshow" aria-live="off">
+<div class="slide" data-index="0" style="opacity:1"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wCEAAkGBxAQEBAQEBEQEBAVDw8PDw8PDw8PDw8NFREWFhURExUYHSggGBolHRUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGhAQGy0mICYtLS8tLy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKMBNwMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAABgcCAwUBAQj/xAA9EAACAQIEAwYDBAIFAwUAAAABAgADEQQSITEFQVFhBhMicYGRMqGxQlKx0fAHFRYjM2Jy8TOCkqLC8f/EABoBAQADAQEBAAAAAAAAAAAAAAABAgMEBQb/xAAjEQACAgICAgMBAAAAAAAAAAAAAQIRAxIhMQQTIkFRcYET/9oADAMBAAIRAxEAPwD4vAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/2Q==" alt="photo 1"></div>
+<div class="slide" data-index="1" style="opacity:0"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBUQEBUVFRUVFRUVFRYVFRUVFRUVFRUWFhUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGxAQGy0lICUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKMBNwMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAFAAIDBAYBB//EADkQAAIBAwMCBAQEBQMFAQAAAAECAwAEEQUhBhIxQVFhcQciMoGRoRQjQrHB0fAHUmLwFjNTcoL/xAAYAQADAQEAAAAAAAAAAAAAAAAAAQIDBf/EAB8RAAEEAgMBAQAAAAAAAAAAAAEAAgMRITEEEkFRcf/aAAwDAQACEQMRAD8A7QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//2Q==" alt="photo 2"></div>
+<div class="slide" data-index="2" style="opacity:0"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBIQEA8PDw8PDw8PDw8PDw8PFREWFhUVFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGxAQGy0lICYtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKMBNwMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAGAAIEBQcBAP/EADYQAAEDAgQDBgQFBQAAAAAAAAEAAgMEEQUSITEGEyJBUXGBMkKRoQeBsdHwQlJicuH/xAAYAQADAQEAAAAAAAAAAAAAAAAAAQIDBP/EAB8RAQACAgIDAQAAAAAAAAAAAAEAAgMRBBIhMUEiQf/aAAwDAQACEQMRAD8A7QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//2Q==" alt="photo 3"></div>
+<div class="slide" data-index="3" style="opacity:0"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEA8QEBAVDw8QEA8QEA8PDw8PDw8QFhUVFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGhAQGy0mICYtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKMBNwMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAFAQIDBAYAB//EADYQAAIBAgQDBgQFBQAAAAAAAAECAwQRAAUSIRMxQVFhBhMicYGRMqHB0fAVUuHxFSNSYnLx/8QAGgEBAQEBAQEAAAAAAAAAAAAAAAECAwQFBv/EACQRAQACAgICAgMAAAAAAAAAAAABAgMRIRIxBBNBUSJhcYHh/9oADAMBAAIRAxEAPwD7QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/2Q==" alt="photo 4"></div>
+<div class="slide" data-index="4" style="opacity:0"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEA8PDw8PDw8PDw8PDw8PDw8PFREWFhUVFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGxAQGy0lICYtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKMBNwMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAAAQIDBAYHB//EADYQAAICAQMCAwYEBwAAAAAAAAABAhEDEiExBEEFUWFxgZGhwdHhMqGx0fAjQlJicuH/xAAYAQADAQEAAAAAAAAAAAAAAAAAAQIDBP/EAB8RAQACAgIDAQAAAAAAAAAAAAEAAgMRIRITMUJBYf/aAAwDAQACEQMRAD8A7QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/2Q==" alt="photo 5"></div>
+<div class="slide" data-index="5" style="opacity:0"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEA8QEBAVDw8PDw8PDw8PDw8PEBAVFhUVFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGhAQGy0lICYtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKMBNwMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAAAQIDBAYHB//EADYQAAICAQMCAwYEBwAAAAAAAAABAhEDEiExBEEFUWFxgZGhwdHhMqGx0fAjQlJicuH/xAAYAQADAQEAAAAAAAAAAAAAAAAAAQIDBP/EAB8RAQACAgIDAQAAAAAAAAAAAAEAAgMRIRITMUJBYf/aAAwDAQACEQMRAD8A7QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/2Q==" alt="photo 6"></div>
+<div class="slide" data-index="6" style="opacity:0"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBIQEA8PDw8PDw8PDw8PDw8PFREWFhUVFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGxAQGy0lICYtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKMBNwMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAGAAIEBQcBAP/EADkQAAEDAgQDBgQFBQAAAAAAAAECAwQRAAUSITEGEyJBUXGBMkKRoQeBsdHwQlJicuH/xAAYAQADAQEAAAAAAAAAAAAAAAAAAQIDBP/EAB8RAQACAgIDAQAAAAAAAAAAAAEAAgMRIRIxBBNBUSJhcYHh/9oADAMBAAIRAxEAPwD4vAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//2Q==" alt="photo 7"></div>
+<div class="slide" data-index="7" style="opacity:0"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEA8PDw8PDw8PDw8PDw8PDw8PFREWFhUVFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGxAQGy0lICYtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKMBNwMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAFAQIDBAYBB//EADYQAAEDAgQDBgQFBQAAAAAAAAECAwQRAAUSIRMxQVFhBhMicYGRMqHB0fAVUuHxFSNSYnLx/8QAGgEBAQEBAQEAAAAAAAAAAAAAAAECAwQFBv/EACQRAQACAgICAgMAAAAAAAAAAAABAgMRIRIxBBNBUSJhcYHh/9oADAMBAAIRAxEAPwD7QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/2Q==" alt="photo 8"></div>
+<div class="slide" data-index="8" style="opacity:0"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEA8QEA8PDw8PDw8PDw8PDw8PFREWFhUVFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGxAQGy0lICYtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKMBNwMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAAAQIDBAYHB//EADYQAAICAQMCAwYEBwAAAAAAAAABAhEDEiExBEEFUWFxgZGhwdHhMqGx0fAjQlJicuH/xAAYAQADAQEAAAAAAAAAAAAAAAAAAQIDBP/EAB8RAQACAgIDAQAAAAAAAAAAAAEAAgMRIRITMUJBYf/aAAwDAQACEQMRAD8A7QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/2Q==" alt="photo 9"></div>
+<div class="slide" data-index="9" style="opacity:0"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEA8QEBAVDw8PDw8PDw8PDw8PEBAVFhUVFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGxAQGy0lICYtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKMBNwMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAGAAIEBQcBAP/EADkQAAEDAgQDBgQFBQAAAAAAAAECAwQRAAUSITEGEyJBUXGBMkKRoQeBsdHwQlJicuH/xAAYAQADAQEAAAAAAAAAAAAAAAAAAQIDBP/EAB8RAQACAgIDAQAAAAAAAAAAAAEAAgMRIRIxBBNBUSJhcYHh/9oADAMBAAIRAxEAPwD4vAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/2Q==" alt="photo 10"></div>
+    </div>
+
+    <div class="controls" style="margin-top:14px">
+      <label style="font-size:13px;color:#6b4b56">Message</label>
+    </div>
+    <textarea id="msg" placeholder="Write a short message..." style="margin-top:10px;width:100%;height:86px;border-radius:8px;padding:10px;border:1px solid rgba(0,0,0,0.06);font-size:14px;resize:none"></textarea>
+    <button class="btn" id="apply" style="margin-top:8px">Apply message</button>
+    <div style="margin-top:10px;font-size:13px;color:#6b4b56">Tip: Click a photo to download it.</div>
+  </div>
+
+  <div id="hearts" aria-hidden="true"></div>
+  <div class="footer">Made with love • Press Play to start the music (browsers may block autoplay).</div>
+</div>
+
+<!-- Audio note: place a file named dooron_dooron.mp3 in the same folder as this HTML when hosting -->
+<audio id="bgAudio" loop preload="auto">
+  <source src="dooron_dooron.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. Add a file named <strong>dooron_dooron.mp3</strong> next to this page.
+</audio>
+
+<script>
+// Typewriter
+const typeEl = document.getElementById('type');
+let defaultText = typeEl.textContent;
+function typeWriter(text, el, speed=18){ el.textContent=''; let i=0; clearInterval(el._tw); el._tw=setInterval(()=>{ if(i<text.length) el.textContent+=text[i++]; else clearInterval(el._tw); }, speed); }
+typeWriter(defaultText, typeEl);
+
+// Slideshow
+const slides = Array.from(document.querySelectorAll('.slide'));
+let idx = 0;
+function show(i){ slides.forEach((s,ii)=> s.style.opacity = ii===i ? 1 : 0 ); idx=i; }
+function nextSlide(){ show((idx+1)%slides.length); }
+let slideInterval = null;
+
+// click-to-download photo
+document.getElementById('slideshow').addEventListener('click', (e)=>{
+  const slide = e.target.closest('.slide');
+  if(!slide) return;
+  const img = slide.querySelector('img');
+  const url = img.src;
+  const a = document.createElement('a'); a.href = url; a.download = 'photo.jpg'; document.body.appendChild(a); a.click(); a.remove();
+});
+
+// hearts system
+const heartsRoot = document.getElementById('hearts');
+function spawnHeart(x=null,y=null){ const h=document.createElement('div'); h.className='heart'; heartsRoot.appendChild(h); const rect=heartsRoot.getBoundingClientRect(); const startX = x===null ? rect.width*0.5 + (Math.random()-0.5)*120 : x; const startY = y===null ? rect.height*0.6 + (Math.random()-0.5)*60 : y; h.style.left = startX + 'px'; h.style.top = startY + 'px'; const animDuration = 2200 + Math.random()*1600; const translateX = (Math.random()-0.5)*240; const translateY = - (220 + Math.random()*300); const rotate = (Math.random()-0.5)*90; h.style.opacity=1; h.animate([ { transform: `translate(-50%,-50%) translate(0px,0px) rotate(45deg)`, opacity:1 }, { transform: `translate(-50%,-50%) translate(${translateX}px, ${translateY}px) rotate(${rotate}deg)`, opacity:0 } ],{duration:animDuration, easing:'cubic-bezier(.2,.9,.3,1)'}).onfinish = ()=>{ h.remove(); }; }
+
+document.getElementById('sendHeart').addEventListener('click', ()=> spawnHeart());
+document.addEventListener('keydown', e=>{ if(e.key.toLowerCase()==='h') spawnHeart(); });
+
+// message apply
+document.getElementById('apply').addEventListener('click', ()=>{ const txt = document.getElementById('msg').value.trim(); if(txt) typeWriter(txt, typeEl, 14); });
+
+// audio controls & autoplay handling
+const audio = document.getElementById('bgAudio');
+const playAllBtn = document.getElementById('playAll');
+function startExperience(){ // try to play audio and start slideshow
+  // start slideshow
+  if(!slideInterval) slideInterval = setInterval(nextSlide, 4200);
+  // try play audio (browsers require user interaction)
+  const p = audio.play();
+  if(p !== undefined){ p.then(()=>{ /* playing */ }).catch(()=>{ /* blocked */ }); }
+}
+// bind playAll button
+playAllBtn.addEventListener('click', ()=> startExperience());
+// also attempt to start on any user gesture
+['click','touchstart','keydown'].forEach(ev=> document.addEventListener(ev, ()=>{ if(!slideInterval) startExperience(); }, {once:true}));
+
+// allow clicking image to pause/play
+document.getElementById('slideshow').addEventListener('dblclick', ()=>{
+  if(slideInterval){ clearInterval(slideInterval); slideInterval=null; } else slideInterval=setInterval(nextSlide,4200);
+});
+
+// small accessibility
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('keydown', e=>{ if(e.key==='Enter') e.target.click(); }));
+
+// start with first slide visible
+show(0);
+</script>
+</body>
+</html>
